@@ -43,14 +43,16 @@ Hecho esto, podemos aplicar la fórmula para calcular el coeficiente de correlac
  
 ![Formula coeficiente correlación](https://www.iloveimg.com/download/1mjmmb2c5Ay7zp7fm65wwjcqczy9d96yvh79z0yr8shlbygsj5lyxzfdxAqw02v2h8z2p16gzw9rp01hk8mdsfhykqhkd1rf1kgqkx6d4xgb120q30bx1rcs9mz04mAdrm3h086x0dzf3wrfywvy1yrktmq80551ymrgfcpAy6jdsx5lvyA1/2)
 
-Todo lo anterior puede parecer complicado. Lo que es importante recordar es que el resultado de esta fórmula va de -1 a 1 y nos indica que tan linearmente correlacionados están nuestros data points. Cuando *r* esta cerca de 0, existe poca correlación linear. Cuando *r* está cerca de 1, existe una correlación positiva. Al contrario, si *r* está cerca de 0 tenemos una correlación negativa.
+Todo lo anterior puede parecer complicado. Lo que es importante recordar es que el resultado de esta fórmula va de -1 a 1 y nos indica que tan linearmente correlacionados están nuestros data points. Cuando *r* esta cerca de 0, existe poca correlación linear. Cuando *r* está cerca de 1 existe una correlación positiva. Al contrario, si *r* está cerca de -1 tenemos una correlación negativa.
 
 Por ejemplo, imagina que queremos analizar una correlación sobre bajar de peso. Supongamos que tenemos el dato de cuantos libros leen un grupo de personas. Posiblemente el coeficiente de correlación será cercano a 0 porque leer libros no tendría porque ser indicador del peso de una persona. Sin embargo, el número de horas de ejercicio podria estar cercano a 1 (entre más ejercicio hace una persona, más baja de peso) y el número de calorias que consume podría estar cercano a -1 (entre más calorias consume una persona, menos baja de peso).
 
-No te preocupes si todo esto parece complicado; solo tienes que recordar lo que cada uno de estos conceptos representa teóricamente. Los cálculos los hechos la final del día por las computadoras. 
+No te preocupes si todo esto parece complicado; solo tienes que recordar lo que cada uno de estos conceptos representa teóricamente. Los cálculos son hechos al final del día por las computadoras. 
 
 Con toda esta información podemos calcular la línea de mejor ajuste. En unidades estándard se vería así: *y̅= rx̅*, donde *r* es el coeficiente de correlación. Esto se traduce a la siguiente ecuación:
 
 ![Formula linea mejor ajuste](https://www.iloveimg.com/download/1mjmmb2c5Ay7zp7fm65wwjcqczy9d96yvh79z0yr8shlbygsj5lyxzfdxAqw02v2h8z2p16gzw9rp01hk8mdsfhykqhkd1rf1kgqkx6d4xgb120q30bx1rcs9mz04mAdrm3h086x0dzf3wrfywvy1yrktmq80551ymrgfcpAy6jdsx5lvyA1/2)
 
 La línea resultante no puede pasar por todos los data points, pero nos muestra una buena representación de todos estos. Con los valores de *xi* podemos calcular valores *yi* que son desconocidos en un principio. Sin embargo, esto solo es posible si existe una correlación linear (ya sea de 1 o -1). 
+
+## Regresión Linear y Algebra
