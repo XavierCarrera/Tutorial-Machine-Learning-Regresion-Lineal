@@ -66,7 +66,7 @@ La fórmula que hemos visto anteriormente para calcular la línea de mejor ajust
 
 Esto nos permite definir una función de error para cualquier línea *y = mx +b* que resulta en la suma de errores cuadráticos. Es decir, la suma del cuadrado de cada distancia vertical entre los puntos y la línea. La ecuación se ve de la siguiente manera:
 
-![Suma de los Errores Cuadráticos](asda.ci)
+![Suma de los Errores Cuadráticos](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Regresion-Lineal/blob/main/img/suma_errores_cuadrados.png?raw=true)
 
 Aunque lo anterior puede sonar complicado, solo tienes que recordar que la regresión de mínimos cuadrados es la distancia (o error) entre nuestros data points y nuestra línea. 
 
@@ -150,5 +150,79 @@ De momento quédate con que esto nos ayudará despues a entender que tan bien nu
 
 ## Regresión en Alta Dimensionalidad
 
+Aunque hasta el momento hemos trabajado solo con matrices bidimensionales, la realidad es que en la mayoría de los casos nos enfrentaremos a datasets multidimensionales. Sin embargo, la regresión de cuadrados mínimos es muy bueno para generalizar en alta dimensionalidad.
 
+En esta caso, si tenemos variables predictoras [*x1, x2, ...., xp*] y una variable de respuesta *y*, entonces la ecuación linear que produce *y* se vería_
+
+*y = m1x1 + m2x2 + ... + mp xp +b*
+
+Lo que intentamos hacer acá es una fórmula para la línea de mejor ajuste para nuestra regresión lineal en alta dimensionalidad. Pero en este caso, no obtenemos una línea de mejor ajuste sino un hiperplano de mejor ajuste.
+
+Podemos crear una matriz *A* que cuando se multiplica con *->x* resulta en un vector conteniendo el valor predecido de *y* de cada data point:
+
+      [m1]
+      [m2]
+      [..]
+      [mp]
+      [b ]
+   
+Para producir alta dimensionalidad necesitamos solo añadir una columna más a cada variable predictor. En un dataset con *n* data points y variables predictoras *p*:
+
+
+    [*x11 x12 ... x1p 1]
+    [x21  x22 ... x2p 1]
+    [ ...          ... ]
+    [xn1  xn2 ... xnp 1]
+    
+De esta forma inicializamos el vector *->b* para contener valores y los valores *y* de cada data point. 
+    
+Resulta ser que de este punto en la derivación es exáctamente lo mismo que antes. Tenemos un vector *->x* por cada *A->x* esta tan cerca como sea posible de *b*. Esto lo podemos resolver con la siguiente ecuación:
+
+![alta dimensionalidad](asdsad.as)
+
+De esta forma, los elementos en *->x* tendrán el valor de coeficientes del hiperplano de mejor ajuste.
+
+En este punto podemos encontrar el hiperplano de mejor ajuste para cualquier dataset, siempre que haya más datapoints que predictores. Pero también puede pasar que los data points sean muy predecibles pero no en una forma linear. En este caso, solo tenemos que añadir nuevos términos no-lineares a nuestra función y actualizar nuestras formulas. Lo anterior se hace añadiendo exponentes a nuestras variables predictoras, dando como resultado una regresión polinomial. 
+
+Por ejemplo, si tuvieramos una variables predictora *x* y una variable a predecir *y* solo tendríamos que representar *y* para representar un polinomio de segundo grado de *x*. Es decir, en vez de representar una línea de mejor ajuste como:
+
+*y = mx + b*
+
+lo que haríamos es representarlo como un mejor ajuste polinomial:
+
+*y = m1x² + m2x + b
+
+En muchas formas, es lo mismo que crear otra variable predictora. Todo lo que hemos hecho es tomar cada punto en nuestro dataset y añadir otro valor x². Después de esto, podemos calcular el coeficiente como lo hacemos normalmente en una regresión linear de alta dimensionalidad.
+
+## Limitaciones de Regresión Linear
+
+Aunque la regresión linear es una herramienta poderosa de machine learning, solo puede ser utilizada si hay una relación linear obvia. Pero este no es el caso cuando si tenemos una variable a predecir que no obedece a una variable predictora.
+
+### Outliers
+
+Otro factor que puede limitar el uso de regresión linear son los outliers. Estos son elementos en nuestro dataset que son muy distintos al resto de nuestros data points. Un outlier bastante alejado de nuestro data set podría afectar la línea de mejor ajuste. 
+
+![]()
+
+Por lo general, los outliers son simplemente excluidos del resto de elementos que se encuentran distantes a ellos. Un método más complicado es modelar los datos y luego excluir data points que contribuyan de más a calcular el error. 
+
+Sin embargo, no debemos olvidar que estos data points podrían tener información valiosa. Hay que tener cuidado si decidimos excluirlos. 
+
+### Multicolinealidad
+
+A multicolinealidad la conocemos cuando hay demasiadas variables que parecen estar fuertemente relacionadas. La mayor preocupación en este punto es que la multicolinealidad puede resultar en múltiples ecuaciones para encontrar el mejor ajuste y que su regresión de cuadrados mínimos produce resultados inestables. Es decir, podríamos tener problemas al extrapolar en situaciones en las que no hay tanta multicolinealidad.
+
+Además, se vuelve más difícil medir el impacto de cada variable predictora en el valor a predecir. También podemos caer en una situación en la que con tantos valores predictores, nuestra regresión linear se especialice en un data set pero tenga problemas para predecir valores nuevos. Hay que recordar que el nombre del juego en este caso es **generalizar**.
+
+### Heterocedasticidad
+
+Otro caso que limita el uso de regresión linear es la popiedad de heterocedasticidad, la cual produce grandes diferencias en las desviaciones estándard. Esto puede causar que algunos data points tengán un peso desproporcionado al calcular su importancia en las regresiones.
+
+![]()
+
+### Sobreajuste
+
+El sobreajuste es probablemente el problema más común cuando utilizamos regresión linear. En estos casos los errores entre los data points tienen un gran efecto en la ecuación de mejor ajuste. Como mencionamos antes, un modelo sobreajustado se desempeña bien en los datos usados para entrenar un modelo. Sin embargo, no será tan bueno para entrenarse con datos nuevos. Variables que no explican el fenómeno en cuestión puden tener demasiado peso, lo que puede dar resultados inesperados.
+
+## Alternativas a la Regresión Linear
 
