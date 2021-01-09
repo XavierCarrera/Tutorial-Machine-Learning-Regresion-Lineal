@@ -14,7 +14,7 @@ Aquí la *x* es el predictor de la variable porque será usado para precedir a *
 
 El principio fundamental de la regresión linear es que un cambio en uno o más variables del predictor generarán un cambio en la respuesta de la variable. 
 
-## Regresión Linear y Estadística
+## 1 Regresión Linear y Estadística
 
 En su nucleo, machine learning es estadística inferencial ya que tomamos datos históricos para extrapolar y hacer predicciones de datos futuros. La estadística es de gran utilidad para encontrar la línea de mejor ajuste. Nuestros data sets son una colección de puntos distribuidos en un gráfico de dispersión, en los cuales tenemos promedios de *x*, *y*, sus desviaciones standard y coeficientes de correlación. 
 
@@ -56,7 +56,7 @@ Con toda esta información podemos calcular la línea de mejor ajuste. En unidad
 
 La línea resultante no puede pasar por todos los data points, pero nos muestra una buena representación de todos estos. Con los valores de *xi* podemos calcular valores *yi* que son desconocidos en un principio. Sin embargo, esto solo es posible si existe una correlación linear (ya sea de 1 o -1). 
 
-## Regresión Linear y Algebra Linear
+## 2 Regresión Linear y Algebra Linear
 
 La algebra linear es de gran ayuda cuando trabajamos con regresión linear porque podemos desarrollar una intuición sobre como se ve la línea de mejor ajuste. 
 
@@ -148,7 +148,7 @@ Si has tenido problemas para entender esta última parte, no te preocupes. Repas
 
 De momento quédate con que esto nos ayudará despues a entender que tan bien nuestro modelo de machine learning predice datos desconocidos.
 
-## Regresión en Alta Dimensionalidad
+## 3 Regresión en Alta Dimensionalidad
 
 Aunque hasta el momento hemos trabajado solo con matrices bidimensionales, la realidad es que en la mayoría de los casos nos enfrentaremos a datasets multidimensionales. Sin embargo, la regresión de cuadrados mínimos es muy bueno para generalizar en alta dimensionalidad.
 
@@ -190,11 +190,11 @@ Por ejemplo, si tuvieramos una variables predictora *x* y una variable a predeci
 
 lo que haríamos es representarlo como un mejor ajuste polinomial:
 
-*y = m1x² + m2x + b
+*y = m1x² + m2x + b*
 
 En muchas formas, es lo mismo que crear otra variable predictora. Todo lo que hemos hecho es tomar cada punto en nuestro dataset y añadir otro valor x². Después de esto, podemos calcular el coeficiente como lo hacemos normalmente en una regresión linear de alta dimensionalidad.
 
-## Limitaciones de Regresión Linear
+## 4 Limitaciones de Regresión Linear
 
 Aunque la regresión linear es una herramienta poderosa de machine learning, solo puede ser utilizada si hay una relación linear obvia. Pero este no es el caso cuando si tenemos una variable a predecir que no obedece a una variable predictora.
 
@@ -224,5 +224,72 @@ Otro caso que limita el uso de regresión linear es la popiedad de heterocedasti
 
 El sobreajuste es probablemente el problema más común cuando utilizamos regresión linear. En estos casos los errores entre los data points tienen un gran efecto en la ecuación de mejor ajuste. Como mencionamos antes, un modelo sobreajustado se desempeña bien en los datos usados para entrenar un modelo. Sin embargo, no será tan bueno para entrenarse con datos nuevos. Variables que no explican el fenómeno en cuestión puden tener demasiado peso, lo que puede dar resultados inesperados.
 
-## Alternativas a la Regresión Linear
+## 5 Alternativas a la Regresión Linear
 
+Aunque la regresión linear de mínimos cuadrados es la forma más común de regresión, hay muchas otras variantes que pueden resolver problemas similares. A continuación veremos algunas de ellas.
+
+### Regresión de Ridge
+
+Esta es similar a la regresión linear, con la diferencia que modifica un poco la función de error. Para la regresión linear usamos la suma de errores cuadrados como una métrica de desempeño. En ridge el objetivo es minimizar los valores cuadrados de los coeficientes también. Esto nos da la siguiente función:
+
+![Regresión Ridge](asdas.sa)
+
+Acá tenemos un valor lambda (λ) que cambia radicalmente como los coeficientos son moderados. Hay que fijarse como la función de error no penaliza el tamaño del *y* intercepto.
+
+### Lasso
+
+Lasso es muy similar a Ridge. Este también penaliza los coeficientes en la función de erros, pero lo hace basado en el tamaño linear en vez del tamaño cuadrático. Por ende, el error es dado por: 
+
+![Regresión Lasso](asdas.sa)
+
+### Comparasión Ridge vs Lasso
+
+Para entender la diferencia entre estas regresiones, tenemos que prestar atención a razones geométricas. 
+
+En la regresión Ridge, por cada valor λ podemos encontrar un valor λ2 por lo que minimizar la siguiente ecuación:
+
+![Ridge2](aasd.as)
+
+es igual a minimizar a la suma de errores cuadrados cuando
+
+![sec](asdasd.as)
+
+Similarmente, por cada valor λ hay un valor λ2 cuando usamos en Lasso que es equivalente a la suma de errores cuadrados cuando tenemos:
+
+![sec2](asdasd.as)
+
+Una forma útil de ver la suma de errores cuadrados cuando hay dos variables predictoras es mostrada en la siguiente imagen. Los ejes *x* y *y* representan los valores del coeficiente en un plano de mejor ajuste y las elipses todos los pares de coeficientes que producen cierto valor de la suma de errores cuadrados. A medida que la suma del error cuadrado aumenta, las elipses se han más grandes.
+
+![Elipses error cuadrado](https://ds055uzetaobb.cloudfront.net/brioche/uploads/s1EBCr1hDR-ellipsesse.png?width=1200)
+
+En la izquierda tenemos un rombo que representa los valores del coeficiente permitidos por Lasso y el círculo los permitidos por Ridge. 
+
+Debido a que ambas regresiones buscan minimizar la suma de errores cuadráticos mientras permanecen en su espacio de coeficientes permitibles. Esto significa que el par de valores seleccionados para ser coeficientes estarán en la elipse más pequeña que intersecta con el diamante o el círculo en los diagramas. 
+
+Es decir, la elipse iniciará con la suma de errores cuadrados más pequeña y crecerá hasta que tope con alguna de las formas. Este será el pico de los coeficientes.
+
+Al ver el diagrama, queda claro que si la elipsis se examnde al círculo, es improbable que toope con un punto donde el coeficiente sea cero. Pero al expandirse hacia el rombo, hay buenas posibilidades de que tope con uno de los vértices en el eje *x* o *y*. De esta manera podemos ver que Lasso difiera de Ridge dado que puede reducir el coeficiente a cero. 
+
+En la práctica, ambas regresiones se comportan de forma muy similar. Pero dado que Lasso puede reducir lo pesos de las variables predictoras a cero, puede distinguir entre variables predictoras. Esta es una buena solución cuando tenemos el riesgo de caer en sobreajustar nuestro modelo. 
+
+Sin embargo, ambas regresiones penalizan la línea de mejor ajuste al tener coeficientes más grandes. Con esto podemos producir ecuaciones que hacen un uso mínimo de las variables predictoras para que impacten lo menos posible los resultados. 
+
+Podemos imaginar todo esto como que Ridge y Lassos tienen recursos limitados, por lo que dan pesos importantes solo a las variables importantes. 
+
+### Regresión de K Vecinos Más Próximos
+
+Los K-Vecinos Más Próximos (KNN por sus siglas en inglés) son otra forma de medir la regresión linear. Como en casos pasados, necesitamos pares de variables predictoras *->xi* que resulta en un variable *yi*. Con esto podemos predecir el valor resultante de una variable *y* desde el vector de la variable predictora *->x*. 
+
+Para hacer una predicción desde *->x*, graficamos *->xi* en nuestro dataset y seleccionamos puntos *k* que están geométricamente cercanos a *->x*. La estimación de la regressión KNN nos da un promedio de los valores resultantes.
+
+Una propiedad poderosa de KNN es que hace pocas suposiciones sobre los datasets en el que se construye. Mientras la regresión linear asume que hay relaciones lineares, la regresión KNN puede acomodarse a casi cualquier problema. 
+
+Además de que al ajustar el valor *k*, podemos cambiar la flexibilidad de la regresión KNN. Si tomamos incluso la menor de las tendencias, podemos tomar el valor *k* más pequeño. Por el otro lado, los valores *k* más grandes eliminarán las desviaciones pequeñas en favor de tendencias grandes. 
+
+Considera la siguiente regresión:
+
+![Regresión KNN](https://ds055uzetaobb.cloudfront.net/brioche/uploads/GKLxAY61te-screen-shot-2019-06-14-at-34348-pm.png?width=1200)
+
+Tenemos un nuevo punto en *y* cada que en *x* tenemos un valor predictor de 3.5 y un valor de 2 para *k*. Recordando que tomamos nuestro valor *k* más cercano a *->x* y el promedio de sus valores resultantes, estamos buscando dos puntos cercanos a *x* = 3.5. Al ver la gráfica, notamos que estos puntos son *x* = 3 y *x* = 4.
+
+Estos puntos corresponden con las variables resultantes *y* = 9 y *y* = *16*, por lo que nuestra predicción es el promedio entre 9 y 16. Es decir, 12.
