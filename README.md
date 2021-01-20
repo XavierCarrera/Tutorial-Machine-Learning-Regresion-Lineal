@@ -191,7 +191,7 @@ De esta forma, los elementos en **x** tendrán el valor de coeficientes del hipe
 
 En este punto podemos encontrar el hiperplano de mejor ajuste para cualquier dataset, siempre que haya más datapoints que predictores. Pero también puede pasar que los data points sean muy predecibles pero no en una forma linear. En este caso, solo tenemos que añadir nuevos términos no-lineares a nuestra función y actualizar nuestras formulas. Lo anterior se hace añadiendo exponentes a nuestras variables predictoras, dando como resultado una regresión polinomial. 
 
-![]()
+![Tridimensional](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Regresion-Lineal/blob/main/img/hiperplano.png?raw=true)
 
 Por ejemplo, si tuvieramos una variables predictora *x* y una variable a predecir *y* solo tendríamos que representar *y* para representar un polinomio de segundo grado de *x*. Es decir, en vez de representar una línea de mejor ajuste como:
 
@@ -209,9 +209,9 @@ Aunque la regresión linear es una herramienta poderosa de machine learning, sol
 
 ### Outliers
 
-Otro factor que puede limitar el uso de regresión linear son los outliers. Estos son elementos en nuestro dataset que son muy distintos al resto de nuestros data points. Un outlier bastante alejado de nuestro data set podría afectar la línea de mejor ajuste. 
+Otro factor que puede limitar el uso de regresión linear son los outliers. Estos son elementos en nuestro dataset que son muy distintos al resto de nuestros data points. Un outlier bastante alejado de nuestro data set podría afectar la línea de mejor ajuste. Este es un ejemplo de detección de outliers en una gráfica de caja:
 
-![]()
+![Outliers](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Regresion-Lineal/blob/main/img/outliers.png?raw=true)
 
 Por lo general, los outliers son simplemente excluidos del resto de elementos que se encuentran distantes a ellos. Un método más complicado es modelar los datos y luego excluir data points que contribuyan de más a calcular el error. 
 
@@ -225,9 +225,9 @@ Además, se vuelve más difícil medir el impacto de cada variable predictora en
 
 ### Heterocedasticidad
 
-Otro caso que limita el uso de regresión linear es la popiedad de heterocedasticidad, la cual produce grandes diferencias en las desviaciones estándard. Esto puede causar que algunos data points tengán un peso desproporcionado al calcular su importancia en las regresiones.
+Otro caso que limita el uso de regresión linear es la popiedad de heterocedasticidad, la cual produce grandes diferencias en las desviaciones estándard. Esto puede causar que algunos data points tengán un peso desproporcionado al calcular su importancia en las regresiones. En la siguiente imagen podemos ver la heterocedasticidad en la distancia entre puntos y la línea de mejor ajuste:
 
-![]()
+![Heterocedasticidad](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Regresion-Lineal/blob/main/img/hetero.png?raw=true)
 
 ### Sobreajuste
 
