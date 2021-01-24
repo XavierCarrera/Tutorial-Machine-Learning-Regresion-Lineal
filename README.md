@@ -1,6 +1,6 @@
 # Tutorial Machine Learning: Regresión Lineal
 
-La Regresión Linear es uno de los algoritmos clásicos de Machine Learning. Se usa para problemas como la predicción de precios o hasta para saber cuanto bajaríamos de peso. 
+La Regresión Lineal es uno de los algoritmos clásicos de Machine Learning. Se usa para problemas como la predicción de precios o hasta para saber cuanto bajaríamos de peso. 
 
 En este apunte encontrarás la explicación teorica y matemática de regresión linear. En los apuntes, pasamos al código para ilustrar los temas cubiertos acá. Para este propósito usamos el data set de pingüinos que pertenece a la librería *Seaborn*.
 
